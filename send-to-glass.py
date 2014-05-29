@@ -29,18 +29,19 @@ def insert_timeline_item(service, text, content_type=None, attachment=None,
     print 'An error occurred: %s' % error
 
 
-# load the credentials from the file
-storage = Storage('credentials')
-credentials = storage.get()
+def build_mirror():
+  # load the credentials from the file
+  storage = Storage('credentials')
+  credentials = storage.get()
 
+  # Create an httplib2.Http object and authorize it with our credentials
+  http = httplib2.Http()
+  http = credentials.authorize(http)
 
-# Create an httplib2.Http object and authorize it with our credentials
-http = httplib2.Http()
-http = credentials.authorize(http)
+  # create a Mirror API service
+  return build('mirror', 'v1', http=http)
 
-
-# create a Mirror API service
-mirror_service = build('mirror', 'v1', http=http)
 
 # insert it into the timeline
+mirror_service = build_mirror()
 insert_timeline_item(mirror_service, message, None, None, "DEFAULT", None)
