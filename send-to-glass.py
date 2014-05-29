@@ -21,7 +21,8 @@ def insert_timeline_item(service, text, content_type=None, attachment=None,
     media_body = MediaIoBaseUpload(
         io.BytesIO(attachment), mimetype=content_type, resumable=True)
   try:
-    return service.timeline().insert(body=timeline_item, media_body=media_body).execute()
+    return service.timeline().insert(
+        body=timeline_item, media_body=media_body).execute()
   except errors.HttpError, error:
     print 'An error occurred: %s' % error
 
@@ -38,3 +39,4 @@ mirror_service = build('mirror', 'v1', http=http)
 
 # insert it into the timeline
 insert_timeline_item(mirror_service, message, None, None, "DEFAULT")
+
