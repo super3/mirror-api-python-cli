@@ -9,9 +9,11 @@ from apiclient.discovery import build
 from apiclient.http import MediaFileUpload
 from oauth2client.client import OAuth2WebServerFlow
 
-
-message = str(sys.argv[1])
-
+# Get command line argument
+try:
+  message = str(sys.argv[1])
+except IndexError:
+  print 'Error! Usage send-to-glass.py \'Hello World!\''
 
 def insert_timeline_item(service, text, content_type=None, attachment=None,
                          notification_level=None, item_type='text'):
