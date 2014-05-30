@@ -46,4 +46,4 @@ def build_mirror():
 
 # insert it into the timeline
 mirror_service = build_mirror()
-insert_timeline_item(mirror_service, message, None, None, "DEFAULT", None)
+insert_timeline_item(mirror_service, message, None, None, "DEFAULT", 'text')
