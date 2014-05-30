@@ -9,12 +9,6 @@ from apiclient.discovery import build
 from apiclient.http import MediaFileUpload
 from oauth2client.client import OAuth2WebServerFlow
 
-# Get command line argument
-try:
-  message = str(sys.argv[1])
-except IndexError:
-  print 'Error! Usage send-to-glass.py \'Hello World!\''
-
 def insert_timeline_item(service, text, content_type=None, attachment=None,
                          notification_level=None, item_type='text'):
   timeline_item = {item_type: text}
@@ -43,7 +37,16 @@ def build_mirror():
   # create a Mirror API service
   return build('mirror', 'v1', http=http)
 
+def command_line():
+  # Get command line argument
+  try:
+    message = str(sys.argv[1])
+  except IndexError:
+    print 'Error! Usage send-to-glass.py \'Hello World!\''
 
-# insert it into the timeline
-mirror_service = build_mirror()
-insert_timeline_item(mirror_service, message, None, None, "DEFAULT", 'text')
+  # insert it into the timeline
+  mirror_service = build_mirror()
+  insert_timeline_item(mirror_service, message, None, None, "DEFAULT", 'text')
+
+if __name__ == "__main__":
+  command_line()
