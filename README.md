@@ -10,7 +10,7 @@ A Python based command line interface for sending stuff to Google Glass using th
 
 ## Usage
 
-1. Run `get-credentials.py` to do the offline flavor of the OAuth 2.0 dance. Use the client ID and client secret for your project found on the [Google APIs console / Google Cloud Console](code.google.com/apis/console)
+1. Run `get-credentials.py` to do the offline flavor of the OAuth 2.0 dance. Use the client ID and client secret for your project found on the [Google APIs console / Google Cloud Console](http://code.google.com/apis/console)
 
         $ python get-credentials.py 3141927848-catsareawesomekpcngkb.apps.googleusercontent.com \   
           850_ITS_A_SECRET_TO_EVERYBODY_vDYhcV
